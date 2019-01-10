@@ -16,6 +16,9 @@
 [![David](https://img.shields.io/david/ollija/react-native-sortable-grid.svg)]()
 [![David](https://img.shields.io/david/dev/ollija/react-native-sortable-grid.svg)]()
 
+## fork改动点：
+__释放手势一对一换位置，其它被触碰的点保持位置不变,增加需求中的某个block不能动，也不能被换位置，属性为notAniamlIndex： number__
+
 ## Installation
 
 ``` npm i react-native-sortable-grid --save ```
