@@ -17,6 +17,7 @@ const BLOCK_TRANSITION_DURATION       = 300 // Milliseconds
 const ACTIVE_BLOCK_CENTERING_DURATION = 200 // Milliseconds
 const DOUBLETAP_TRESHOLD              = 150 // Milliseconds
 const NULL_FN                         = () => {}
+const BLOCK_HEIGHT                    = 70
 
 class Block extends Component {
 
@@ -99,6 +100,7 @@ class SortableGrid extends Component {
     this.doubleTapWait     = false
 
     this.notAniamlIndex    = null
+    this.blockHeight       = BLOCK_HEIGHT
 
     this.state = {
       gridLayout: null,
@@ -153,7 +155,7 @@ class SortableGrid extends Component {
 
       if (dx != 0 || dy != 0) this.initialDragDone = true
 
-      let yChokeAmount = Math.max(0, (this.activeBlockOffset.y + moveY) - (this.state.gridLayout.height - this.blockWidth))
+      let yChokeAmount = Math.max(0, (this.activeBlockOffset.y + moveY) - (this.state.gridLayout.height - this.blockHeight))
       let xChokeAmount = Math.max(0, (this.activeBlockOffset.x + moveX) - (this.state.gridLayout.width - this.blockWidth))
       let yMinChokeAmount = Math.min(0, this.activeBlockOffset.y + moveY)
       let xMinChokeAmount = Math.min(0, this.activeBlockOffset.x + moveX)
@@ -430,7 +432,7 @@ class SortableGrid extends Component {
   }
 
   _animateGridHeight = () => {
-    this.gridHeightTarget = this.rows * this.state.blockWidth
+    this.gridHeightTarget = this.rows * this.blockHeight
     if (this.gridHeightTarget === this.state.gridLayout.height || this.state.gridLayout.height === 0)
       this.state.gridHeight.setValue(this.gridHeightTarget)
     else if (this.state.gridHeight._value !== this.gridHeightTarget) {
@@ -561,7 +563,7 @@ class SortableGrid extends Component {
 
   _getBlockStyle = (key) => [
     { width: this.state.blockWidth,
-      height: this.state.blockWidth,
+      height: this.blockHeight,
       justifyContent: 'center' },
     this._blockPositionsSet() && (this.initialDragDone || this.state.deleteModeOn) &&
     { position: 'absolute',
@@ -597,4 +599,5 @@ const styles = StyleSheet.create(
   })
 
 module.exports = SortableGrid
+
 
