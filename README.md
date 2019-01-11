@@ -18,7 +18,8 @@
 
 ## fork改动点：
 1、__释放手势一对一换位置，其它被触碰的点保持位置不变,增加需求中的某个block不能动，也不能被换位置，属性为notAniamlIndex： number__
-2、新增blockHeight属性，用户可以改block的定高，默认是70
+
+2、__新增blockHeight属性，用户可以改block的定高，默认是70__
 
 ## Installation
 
